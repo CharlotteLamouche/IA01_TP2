@@ -36,6 +36,31 @@
     )
   )
 
+;;; ma fonction actions elle fonctionne (enfin retourne bien une liste avec toutes les actions possibles
+(defun actions(etat)
+  (
+   let (action_possibles '())
+    (if(< (car etat) 4)
+       (setq action_possibles (append action_possibles (list 1))))
+    (if(> (cadr etat) 0)
+        (setq action_possibles (append action_possibles (list 2))))
+    (if(> (car etat) 0)
+        (setq action_possibles (append action_possibles (list 3))))
+    (if(< (cadr etat) 3)
+        (setq action_possibles (append action_possibles (list 4))))
+    (if(< (+ (cadr etat) (car etat)) 4)
+        (setq action_possibles (append action_possibles (list 5))))
+    (if(< (+ (car etat) (cadr etat)) 3)
+        (setq action_possibles (append action_possibles (list 6))))
+    (if(> (+ (car etat) (cadr etat)) 4)
+        (setq action_possibles (append action_possibles (list 7))))
+   
+   (if(> (+ (car etat) (cadr etat)) 3)
+       (setq action_possibles (append action_possibles (list 8))))
+    
+    (print action_possibles)
+    )
+)
      
 (defun successeurs(etat etatsVisites)
   (
