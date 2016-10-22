@@ -41,3 +41,32 @@
   (
    )
   )
+
+;;un début de successeurs bon apparamment ça fonctionne
+
+(defun successeurs (etat etatsVisites)
+  (
+   let ((list_successeurs '()))
+    (dolist ( nieme_action (actions etat))
+      ( 
+       let ((action '()))
+        (
+         cond
+         ((eq nieme_action 1)(setq action (list 4 (cadr etat))))
+         ((eq nieme_action 2)(setq action (list (car etat) 0)))
+         ((eq nieme_action 3)(setq action (list 0 (cadr etat))))
+         ((eq nieme_action 4)(setq action (list (car etat) 3)))
+         ((eq nieme_action 5)(setq action (list (+ (car etat) (cadr etat) 0))))
+         ((eq nieme_action 6)(setq action (list 0 (+ (cadr etat) (cadr etat)))))
+         ((eq nieme_action 7)(setq action (list 4 (- (cadr etat) (- 4 (car etat))))))
+         ((eq nieme_action 8)(setq action (list (- (car etat) (- 3 (cadr etat))) 3)))
+        
+         (print action))
+        (if(and (not(member action etatsVisites :test #'equal)) (not(member action list_successeurs :test #'equal)))
+            (setq list_successeurs (append list_successeurs (list action))))
+        (print list_successeurs)
+        )
+      )
+    )
+  )
+  
