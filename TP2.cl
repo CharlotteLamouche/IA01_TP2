@@ -59,9 +59,8 @@
          ((eq nieme_action 5)(setq action (list (+ (car etat) (cadr etat) 0))))
          ((eq nieme_action 6)(setq action (list 0 (+ (cadr etat) (cadr etat)))))
          ((eq nieme_action 7)(setq action (list 4 (- (cadr etat) (- 4 (car etat))))))
-         ((eq nieme_action 8)(setq action (list (- (car etat) (- 3 (cadr etat))) 3)))
-        
-         (print action))
+         ((eq nieme_action 8)(setq action (list (- (car etat) (- 3 (cadr etat))) 3))))
+
         (if(and (not(member action etatsVisites :test #'equal)) (not(member action list_successeurs :test #'equal)))
             (setq list_successeurs (append list_successeurs (list action))))
         (print list_successeurs)
