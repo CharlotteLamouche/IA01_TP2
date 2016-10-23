@@ -69,3 +69,18 @@
     )
   )
   
+;; debut de explore je pense que c'est en largeur :p
+
+(defun explore_largeur1(etat chemin)
+  (
+   let ((sol ()))
+   (
+    dolist (nieme_etat (successeurs etat chemin))
+     (
+      cond
+      ((eq (car nieme_etat) 2)(setq chemin (append chemin (list nieme_etat)))(format t "~% un chemin possible : ~s " chemin))
+      ((not(member nieme_etat chemin :test #'equal))(setq chemin (append chemin (list nieme_etat)))(setq sol (explore_largeur1 nieme_etat chemin)))
+      (t (return)))
+     )
+    )
+  )
