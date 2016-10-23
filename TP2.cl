@@ -19,24 +19,7 @@
 ;;; Help | Interactive IDE Intro command.  And be sure to explore
 ;;; the other facilities on the Help menu.
 
-(defun actions (etat)
-  (progn
-    (setq x (car etat))
-    (setq y (cdr etat))
-    (cond
-     ((< x 4) (setq etat '(4 y)))
-     ((> y 0) (setq etat '(x 0)))
-     ((> x 0) (setq etat '(0 y)))
-     ((< y 3) (setq etat '(x 3)))
-     ((< (+ x y) 4) (setq etat '((+ x y) 0)))
-     ((< (+ y x) 3) (setq etat '(0 (+ y x))))
-     ((> (+ x y) 4) (setq etat '(4 (- y (- 4 x)))))
-     ((> (+ y x) 3) (setq etat '((- y (- 4 x)) 3)))
-     )
-    )
-  )
 
-;;; ma fonction actions elle fonctionne (enfin retourne bien une liste avec toutes les actions possibles
 (defun actions(etat)
   (
    let (action_possibles '())
@@ -48,9 +31,9 @@
         (setq action_possibles (append action_possibles (list 3))))
     (if(< (cadr etat) 3)
         (setq action_possibles (append action_possibles (list 4))))
-    (if(< (+ (cadr etat) (car etat)) 4)
+    (if(and (< (+ (cadr etat) (car etat)) 4) (> (car etat) 0))      ;test si car > 0
         (setq action_possibles (append action_possibles (list 5))))
-    (if(< (+ (car etat) (cadr etat)) 3)
+    (if(and (< (+ (car etat) (cadr etat)) 3) (> (cadr etat) 0))     ;test si cadr > 0
         (setq action_possibles (append action_possibles (list 6))))
     (if(> (+ (car etat) (cadr etat)) 4)
         (setq action_possibles (append action_possibles (list 7))))
@@ -61,8 +44,3 @@
     (print action_possibles)
     )
 )
-     
-(defun successeurs(etat etatsVisites)
-  (
-   )
-  )
