@@ -55,7 +55,7 @@
          ((eq nieme_action 3)(setq action (list 0 (cadr etat))))
          ((eq nieme_action 4)(setq action (list (car etat) 3)))
          ((eq nieme_action 5)(setq action (list (+ (car etat) (cadr etat) 0))))
-         ((eq nieme_action 6)(setq action (list 0 (+ (cadr etat) (cadr etat)))))
+         ((eq nieme_action 6)(setq action (list 0 (+ (cadr etat) (car etat)))))
          ((eq nieme_action 7)(setq action (list 4 (- (cadr etat) (- 4 (car etat))))))
          ((eq nieme_action 8)(setq action (list (- (car etat) (- 3 (cadr etat))) 3))))
 
